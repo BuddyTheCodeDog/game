@@ -12,7 +12,6 @@ class Character {
         this.pets = [];
         this.activePet = null;
         this.spells = [];
-        this.activeSpell = null;
         this.weapons = [];
         this.activeWeapon = null;
 
@@ -33,11 +32,23 @@ class Character {
             } 
         }
     }
-    activateSpell(spellName){
+    castSpell(spellName){
         for(let i = 0; i < this.spells.length; i++){
             const spell = this.spells[i];
             if(spell.name === spellName){
-                this.activeSpell = spell;
+                console.log("Casting",spell.name);
+                const manaCost = spell.manaCost;
+                if(this.mana >= manaCost){
+                this.mana = this.mana - manaCost;
+                console.log("Spell Damage:");
+                return this.getDamage(spell);
+                }
+                else{
+                    console.log("Not Enough Mana NOOB");
+                    console.log("Spell Damage:");
+                    return 0;
+                }
+                
             }
         }
     }
@@ -59,25 +70,26 @@ class Character {
             this.mana = this.mana + 7;
         }
     }
-    getDamage(){
+    getDamage(spell){
         if(this.activePet){
             const petDamage = this.activePet.damage;
             const magicDamage = this.magic;
+            console.log("Pet Damage:");
             return petDamage + magicDamage;
         }
-        else if(this.activeSpell){
-            const spellDamage = this.activeSpell.damage;
-            const manaCost = this.activeSpell.manaCost;
-            this.mana = this.mana - manaCost;
+        else if(spell){
+            const spellDamage = spell.damage;
             return spellDamage;
             
         }
         else if(this.activeWeapon){
             const attackDamage = this.attack;
+            console.log("Weapon + Attack Damage:");
             return this.attack + this.activeWeapon.damage;
         }
         else{
             const attackDamage = this.attack;
+            console.log("Attack Damage:");
             return attackDamage;
         }
     }
