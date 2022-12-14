@@ -34,10 +34,10 @@ class Character {
     }
     castSpell(spellName){
         for(let i = 0; i < this.spells.length; i++){
-            const spell = this.spells[i];
+            const spell = this.spells[i]; //have spell check
             if(spell.name === spellName){
-                console.log("Casting",spell.name);
-                const manaCost = spell.manaCost;
+                console.log("Casting",spell.name); 
+                const manaCost = spell.manaCost; // mana check
                 if(this.mana >= manaCost){
                 this.mana = this.mana - manaCost;
                 console.log("Spell Damage:");
@@ -71,21 +71,20 @@ class Character {
         }
     }
     getDamage(spell){
+        if(spell){
+            const spellDamage = spell.damage;
+            return spellDamage;
+        }
         if(this.activePet){
             const petDamage = this.activePet.damage;
             const magicDamage = this.magic;
             console.log("Pet Damage:");
             return petDamage + magicDamage;
         }
-        else if(spell){
-            const spellDamage = spell.damage;
-            return spellDamage;
-            
-        }
         else if(this.activeWeapon){
             const attackDamage = this.attack;
             console.log("Weapon + Attack Damage:");
-            return this.attack + this.activeWeapon.damage;
+            return attackDamage + this.activeWeapon.damage;
         }
         else{
             const attackDamage = this.attack;
