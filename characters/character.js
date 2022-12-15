@@ -23,6 +23,7 @@ class Character {
             if(pet.name === petName){
                 this.activePet = pet;
             }
+            
         }
     }
     equipWeapon(weaponName){
@@ -31,9 +32,7 @@ class Character {
             if(weapon.name === weaponName){
                 this.activeWeapon = weapon;
             } 
-            else{
-                console.log("You dont have that dumbass");
-            }
+            
         }
     }
     castSpell(spellName){
@@ -51,6 +50,10 @@ class Character {
                     return 0;
                 }
                 
+            }
+            else{
+                console.log("Not a spell, work on spelling lmao");
+                return 0;
             }
         }
     }

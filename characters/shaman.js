@@ -2,7 +2,9 @@ const Character = require("./character");
 const Pet = require("./pet");
 const potato = require("../weapons/potato");
 const eatDogFood = require("../spells/eatDogFood");
+const vape = require("../spells/vape");
 const config = require("../config/classNames");
+const gun = require("../weapons/gun");
 
 class Shaman extends Character {
     constructor(name){
@@ -12,7 +14,9 @@ class Shaman extends Character {
         const pet2 = new Pet("RoboBuddy",11);
         this.pets.push(pet2);
         this.weapons.push(potato);
+        this.weapons.push(gun);
         this.spells.push(eatDogFood);
+        this.spells.push(vape);
     }
 }
 

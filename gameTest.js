@@ -102,18 +102,9 @@ async function gameLoop(){
     const playerName = await prompt("Type player name:\n");
 
     //pick class
-    
-    while (true) {
-        pickClass = await prompt("Select class: gambler, mage, shaman (shaman has everything rn):\n");
-        if (pickClass === config.classNames.GamblerClassName || 
-            pickClass === config.classNames.MageClassName ||
-            pickClass === config.classNames.ShamanClassName) {
-          break;
-            }
-        }
+   const pickClass = await prompt("Select class: gambler, mage, shaman (shaman has everything rn):\n");
    // if else bad entry 
    // create character class
-
    if(pickClass === config.classNames.GamblerClassName){
     character = new Gambler(playerName);
    }
@@ -123,7 +114,9 @@ async function gameLoop(){
    else if(pickClass === config.classNames.ShamanClassName){
     character = new Shaman(playerName);
    }
-   
+   else{
+    throw Error("WRONG INPUT, WORKING ON A BAD ENTRY LOOP FUNCTION");
+   }
    console.log(`-----------------------`);
    console.log(character);
    console.log(`-----------------------`);
