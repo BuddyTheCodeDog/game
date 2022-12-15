@@ -1,3 +1,4 @@
+const config = require("../config/classNames");
 class Character {
     constructor(name,className,attack,magic,defense,speed,health,mana){
         this.name = name;
@@ -30,17 +31,18 @@ class Character {
             if(weapon.name === weaponName){
                 this.activeWeapon = weapon;
             } 
+            else{
+                console.log("You dont have that dumbass");
+            }
         }
     }
     castSpell(spellName){
         for(let i = 0; i < this.spells.length; i++){
             const spell = this.spells[i]; //have spell check
-            if(spell.name === spellName){
-                console.log("Casting",spell.name); 
+            if(spell.name === spellName){ 
                 const manaCost = spell.manaCost; // mana check
                 if(this.mana >= manaCost){
                 this.mana = this.mana - manaCost;
-                console.log("Spell Damage:");
                 return this.getDamage(spell);
                 }
                 else{
@@ -54,17 +56,17 @@ class Character {
     }
     levelUp(){
         this.level = this.level +1;
-        if(this.className === "Gambler"){
+        if(this.className === config.classNames.GamblerClassName){
             this.attack = this.attack +2;
             this.health = this.health +10;
             this.mana = this.mana + 5;
         }
-        else if(this.className === "Mage"){
+        else if(this.className === config.classNames.MageClassName){
             this.attack = this.attack +1;
             this.health = this.health +5;
             this.mana = this.mana + 10;
         }
-        else if(this.className === "Shaman"){
+        else if(this.className === config.classNames.ShamanClassName){
             this.attack = this.attack +1;
             this.health = this.health +7;
             this.mana = this.mana + 7;
@@ -78,17 +80,16 @@ class Character {
         if(this.activePet){
             const petDamage = this.activePet.damage;
             const magicDamage = this.magic;
-            console.log("Pet Damage:");
             return petDamage + magicDamage;
         }
         else if(this.activeWeapon){
             const attackDamage = this.attack;
-            console.log("Weapon + Attack Damage:");
+            
             return attackDamage + this.activeWeapon.damage;
         }
         else{
             const attackDamage = this.attack;
-            console.log("Attack Damage:");
+
             return attackDamage;
         }
     }
