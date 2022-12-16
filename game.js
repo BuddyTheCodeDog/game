@@ -131,7 +131,7 @@ async function gameLoop(){
 
    //call fight function
 
-   while(wins<4){
+   while(wins<8){
     wins = await fight(character,mob);
     incr = incr + 1;
      mob = allMobs[incr];
