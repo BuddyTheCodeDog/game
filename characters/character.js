@@ -51,10 +51,7 @@ class Character {
                 }
                 
             }
-            else{
-                console.log("Not a spell, work on spelling lmao");
-                return 0;
-            }
+            
         }
     }
     levelUp(){

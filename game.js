@@ -9,78 +9,76 @@ const config = require("./config/classNames");
 
 let wins = 0;
 async function fight(character,mob){
-    console.log(`-----------------------`);
-    console.log(`LOOK OUT LOOOOOSER! A ${mob.name} WANTS TO FUK AROUND AND FIND OUT`);
-    console.log(`-----------------------`);
+    console.log(`--------------------------------------------------`);
+    console.log(`LOOK OUT LOOOOOSER!\n A ${mob.name} \nWANTS TO FUK AROUND AND FIND OUT\n`);
+    console.log(`--------------------------------------------------`);
 
 
    while(character.health > 0 && mob.health > 0){
     //show player stats
-    console.log(`-----------------------`);
-    console.log(`Your HP: ${character.health}`);
+    console.log(`--------------------------------------------------`);
+    console.log(`${character.name} HP: ${character.health}`);
     //show mob stats
-    console.log(`Mob HP: ${mob.health}`);
-    console.log(`-----------------------`);
+    console.log(`${mob.name} HP: ${mob.health}`);
+    console.log(`--------------------------------------------------`);
     
-
-    //player choice
-    
-    const choice = await prompt("chooooose a move: [1]fight, [2]equip weapon, [3]summon pet, [4]spell\n");
     //bad choice
     
 
     let damage = 0;
+    let a = 0;
+while(a === 0){
+     //player choice
+    const choice = await prompt("chooooose a move: [1]fight, [2]equip weapon, [3]summon pet, [4]spell\n");
 
-    
     if(choice === "4"){
         console.log(character.spells);
         pickSpell = await prompt("choose spell to cast: \n");
         damage = character.castSpell(pickSpell);
-        
+        a = 1; 
     }
     else if(choice === "1"){
         damage = character.getDamage();
-  
+        a = 1;
     }
-
     else if(choice === "2"){
         console.log(character.weapons);
         pickWeapon = await prompt("choose a weapon:\n");
         character.equipWeapon(pickWeapon);
         console.log(`you equipped ${character.activeWeapon.name} and lost a turn`);
+        a = 1;
     }
     else if(choice === "3"){
         console.log(character.pets);
         pickPet = await prompt("choose a pet: \n");
         character.summonPet(pickPet);
-        console.log(`You now have Summoned ${character.activePet} and lost a turn`); //need bad input and pet summon log
-
+        console.log(`You now have Summoned ${character.activePet.name} and lost a turn`);
+        a = 1; //need bad input and pet summon log
     }
     else{
         console.log("TYPE 1 2 3 or 4... idiot");
-        console.log("LOSE A TURN FOR BEING DUMB");
-        
+        a = 0; 
     }
+}
 
 
-    console.log(`-----------------------`);
-    console.log(`-----------------------`);
+    console.log(`--------------------------------------------------`);
     console.log(`${character.name} did ${damage} damage`);
     mob.health = mob.health - damage;
     const mobDamage = mob.damage;
     character.health = character.health - mob.damage;
     console.log(`${mob.name} did ${mobDamage} damage in return` );
-    console.log(`-----------------------`);
+    console.log(`--------------------------------------------------`);
 
 
    } //while loop end
 
-   console.log("!!!!!!!!!!!FIGHT OVER!!!!!!!!!");
+   console.log("           !!!!!!!!!!!FIGHT OVER!!!!!!!!!         ");
    character.levelUp();
-   console.log(`-----------------------`);
-   console.log(`${character.name} LEVELED UP`);
-   console.log(`LEVEL ${character.level}`);
-   console.log(`-----------------------`);
+   console.log(`--------------------------------------------------`);
+   console.log(`        ${character.name} LEVELED UP`              );
+   console.log(`        LEVEL           ${character.level}`);
+   console.log(`--------------------------------------------------`);
    wins = wins +1;
    return wins;
    
@@ -111,7 +109,6 @@ async function gameLoop(){
           break;
             }
         }
-   // if else bad entry 
    // create character class
 
    if(pickClass === config.classNames.GamblerClassName){
@@ -124,9 +121,9 @@ async function gameLoop(){
     character = new Shaman(playerName);
    }
    
-   console.log(`-----------------------`);
+   console.log(`--------------------------------------------------`);
    console.log(character);
-   console.log(`-----------------------`);
+   console.log(`--------------------------------------------------`);
    // spawn 1st mob
    let mob = allMobs[0];
    
