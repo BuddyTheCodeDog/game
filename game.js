@@ -10,7 +10,7 @@ const config = require("./config/classNames");
 let wins = 0;
 async function fight(character,mob){
     console.log(`--------------------------------------------------`);
-    console.log(`LOOK OUT LOOOOOSER!\n A ${mob.name} \nWANTS TO FUK AROUND AND FIND OUT\n`);
+    console.log(`LOOK OUT LOOOOOSER!\n ${mob.name} \nWANTS TO FUK AROUND AND FIND OUT\n`);
     console.log(`--------------------------------------------------`);
 
 
@@ -34,8 +34,13 @@ while(a === 0){
     if(choice === "4"){
         console.log(character.spells);
         pickSpell = await prompt("choose spell to cast: \n");
+        if(pickSpell === "back"){
+            a = 0;
+        }
+        else{
         damage = character.castSpell(pickSpell);
-        a = 1; 
+        a = 1;
+        } 
     }
     else if(choice === "1"){
         damage = character.getDamage();
@@ -43,18 +48,30 @@ while(a === 0){
     }
     else if(choice === "2"){
         console.log(character.weapons);
-        pickWeapon = await prompt("choose a weapon:\n");
-        character.equipWeapon(pickWeapon);
+        pickWeapon = await prompt("choose a weapon or....\n type back to go back:\n");
+        if(pickWeapon === "back"){
+            a = 0;
+        }
+        else{
+            character.equipWeapon(pickWeapon);
         console.log(`you equipped ${character.activeWeapon.name} and lost a turn`);
         a = 1;
+        }
     }
     else if(choice === "3"){
         console.log(character.pets);
         pickPet = await prompt("choose a pet: \n");
+        if(pickPet === "back"){
+            a = 0;
+        }
+        else{
         character.summonPet(pickPet);
         console.log(`You now have Summoned ${character.activePet.name} and lost a turn`);
-        a = 1; //need bad input and pet summon log
+        a = 1; //need bad input and pet summon 
+        }
     }
+        
+    
     else{
         console.log("TYPE 1 2 3 or 4... idiot");
         a = 0; 
@@ -74,6 +91,7 @@ while(a === 0){
    } //while loop end
 
    console.log("           !!!!!!!!!!!FIGHT OVER!!!!!!!!!         ");
+   if(character.health > 0){
    character.levelUp();
    console.log(`--------------------------------------------------`);
    console.log(`        ${character.name} LEVELED UP`              );
@@ -81,6 +99,14 @@ while(a === 0){
    console.log(`--------------------------------------------------`);
    wins = wins +1;
    return wins;
+   }
+
+   else if(character.health <= 0){
+    console.log("------------------GAME OVER-----------------------");
+    wins = 0;
+    throw error("END GAME ERROR, YOU SUCK SO BAD THAT IT BROKE THE GAME ENTIRELY< DELETED ALL FILES AND MADE BUDDY MADDD");
+
+   }
    
    //loop fight
   
