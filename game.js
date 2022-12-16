@@ -2,6 +2,8 @@ const Mage = require("./characters/mage");
 const Gambler = require("./characters/gambler");
 const prompt = require("prompt-promise");
 const allMobs = require("./mobs/allMobs");
+const allSpells = require("./spells/allSpells");
+const allWeapons = require("./weapons/allWeapons")
 
 const Pet = require("./characters/pet");
 const Shaman = require("./characters/shaman");
