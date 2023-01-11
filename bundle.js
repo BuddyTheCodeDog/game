@@ -337,12 +337,6 @@ const setActiveMob = require("./setActiveMob");
 const waitForChoice = require("./waitForChoice");
 const waitForSecondaryChoice = require("./waitForSecondaryChoice");
 
-//https://cdn.pixabay.com/download/audio/2021/08/09/audio_da199d7bf6.mp3?filename=angry-mob-loop-6847.mp3
-
-//hits
-//https://cdn.pixabay.com/download/audio/2021/08/09/audio_420245a900.mp3?filename=fist-punch-or-kick-7171.mp3
-//https://cdn.pixabay.com/download/audio/2022/03/10/audio_d2cdbf44ba.mp3?filename=punch-2-37333.mp3
-//https://cdn.pixabay.com/download/audio/2021/08/04/audio_8df0887da7.mp3?filename=karate-chop-6357.mp3
 
 let test;
 let loss = 0;
@@ -350,7 +344,7 @@ let wins = 0;
 let mobIncr = 0;
 let character;
 let activeMob;
-let playerName = 'BuddyTestName';
+let playerName = 'Buddy';
 
 function chooseClass(pickClass){
     if(pickClass === config.classNames.GamblerClassName){
