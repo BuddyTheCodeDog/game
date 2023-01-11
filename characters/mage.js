@@ -11,6 +11,7 @@ class Mage extends Character {
         this.pets.push(pet1);
         this.weapons.push(coffeeCup);
         this.spells.push(vape);
+        this.characterImg = 'https://cdn.pixabay.com/photo/2022/08/16/16/25/final-7390750_960_720.jpg'
         
     }
 }

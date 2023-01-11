@@ -15,8 +15,35 @@ class Character {
         this.spells = [];
         this.weapons = [];
         this.activeWeapon = null;
+        this.characterImg = null;
 
     }
+
+    getCharacterInfoString(){
+        let str = "";
+        str += `Name: ${this.name} <br/>`;
+        str += `Class: ${this.className}<br/>`;
+        str += `Level: ${this.level}<br/>`;
+        str += `Attack: ${this.attack}<br/>`;
+        str += `Magic: ${this.magic}<br/>`;
+        str += `Defense: ${this.defense}<br/>`;
+        str += `Speed: ${this.speed}<br/>`;
+        str += `Health: ${this.health}<br/>`;
+        str += `Mana: ${this.mana}<br/>`;
+        str += `Pets: ${this.pets.length}<br/>`;
+        if(this.activePet){
+            str += `Active Pet: ${this.activePet.name}<br/>`;
+        };
+        str += `Spells: ${this.spells.length}<br/>`;
+        str += `Weapons: ${this.weapons.length}<br/>`;
+        if(this.activeWeapon){
+            str += `Active Weapon: ${this.activeWeapon.name}<br/>`;
+        };
+
+        return str;
+        
+    }
+
     summonPet(petName){
         for(let i = 0; i < this.pets.length; i++){
             const pet = this.pets[i];
@@ -93,6 +120,10 @@ class Character {
             return attackDamage;
         }
     }
+
+    
+    
+    
 }
 
 module.exports = Character;

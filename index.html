@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <div id="header">BUDDY'S FIGHTING GAME OF CHESS</div>
+      </head>
+      
+    <body id="body">
+        <audio id="crowd-noise"></audio>
+        <audio id="damage-noise"></audio>
+
+        <div id="character-select-container">
+            <h1>Choose a class</h1>
+            <div id="character-select-buttons">
+                <button id="gambler" class="button" data-class="gambler">Gambler</button>
+                <button id="mage" class="button" data-class="mage">Mage</button>
+                <button id="shaman" class="button" data-class="shaman">Shaman</button>
+            </div>
+        </div>
+        <div id="character-mob-container-container">
+            <div id="character-info-container" style="display:none">
+                
+                <h1 id="char-h1">Character Info</h1>
+
+                <div id="character-stats-and-img-container">
+                    <div id="character-info"></div>
+                    
+                    <div id="char-img" class="character-img">
+                        <img id="character-img" class="img"> 
+                    </div>
+                </div>
+            </div>
+
+            <div id="mob-info-container" style="display:none">
+                <h1 id="mob-h1">Mob Info</h1>
+                <div id="mob-stats-and-img-container">
+                    <div id="mob-info"></div>
+                    <img id="mob-img" class="img">
+                </div>
+            </div>
+        </div>
+
+        <div id="user-choice-container" style="display:none">
+            <h1 id="choose-h1">Choose a Move</h1>
+            <div id="user-choice">
+                <button id="fight-button" class="button">Fight</button>
+                <button id="equip-weapon-button" class="button">Equip Weapon</button>
+                <button id="summon-pet-button" class="button">Summon Pet</button>
+                <button id="cast-spell-button" class="button">Cast Spell</button>
+            </div>
+        </div>
+
+        <div id="user-secondary-choice-container" style="display:none">
+            <h1 id="user-secondary-choice-h1"></h1>
+            <div id="user-secondary-choice">
+             
+            </div>
+        
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div id= "modal-content-container" class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-label" id="modal-you-lose"></div>
+              <div class="modal-img-container">
+                <h1 id="modal-h1" class="YOU LOSE"></h1> 
+              </div>
+        </div>
+        
+        
+
+        <script src="bundle.js"></script>
+    </body>
+</html>

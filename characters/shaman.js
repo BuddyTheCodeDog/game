@@ -17,6 +17,7 @@ class Shaman extends Character {
         this.weapons.push(gun);
         this.spells.push(eatDogFood);
         this.spells.push(vape);
+        this.characterImg = 'https://cdn.pixabay.com/photo/2021/01/27/05/26/dryad-5953593_960_720.jpg';
     }
 }
 
